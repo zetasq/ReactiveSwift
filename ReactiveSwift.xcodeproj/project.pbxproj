@@ -29,6 +29,10 @@
 		D4C1508D21119B65003ECB74 /* ReactiveSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReactiveSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4C1509221119B65003ECB74 /* ReactiveSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveSwiftTests.swift; sourceTree = "<group>"; };
 		D4C1509421119B65003ECB74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D4C1509F21119BE5003ECB74 /* Framework.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Framework.xcconfig; sourceTree = "<group>"; };
+		D4C150A021119BE5003ECB74 /* Test.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Test.xcconfig; sourceTree = "<group>"; };
+		D4C150A121119BE5003ECB74 /* TargetCommon.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = TargetCommon.xcconfig; sourceTree = "<group>"; };
+		D4C150A221119BE5003ECB74 /* ProjectCommon.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ProjectCommon.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,8 +57,9 @@
 		D4C1507A21119B65003ECB74 = {
 			isa = PBXGroup;
 			children = (
-				D4C1508621119B65003ECB74 /* ReactiveSwift */,
-				D4C1509121119B65003ECB74 /* ReactiveSwiftTests */,
+				D4C1509E21119BC5003ECB74 /* Configs */,
+				D4C1508621119B65003ECB74 /* Sources */,
+				D4C1509121119B65003ECB74 /* Tests */,
 				D4C1508521119B65003ECB74 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,22 +73,33 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D4C1508621119B65003ECB74 /* ReactiveSwift */ = {
+		D4C1508621119B65003ECB74 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				D4C1508721119B65003ECB74 /* ReactiveSwift.h */,
 				D4C1508821119B65003ECB74 /* Info.plist */,
 			);
-			path = ReactiveSwift;
+			path = Sources;
 			sourceTree = "<group>";
 		};
-		D4C1509121119B65003ECB74 /* ReactiveSwiftTests */ = {
+		D4C1509121119B65003ECB74 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				D4C1509221119B65003ECB74 /* ReactiveSwiftTests.swift */,
 				D4C1509421119B65003ECB74 /* Info.plist */,
 			);
-			path = ReactiveSwiftTests;
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		D4C1509E21119BC5003ECB74 /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				D4C150A221119BE5003ECB74 /* ProjectCommon.xcconfig */,
+				D4C150A121119BE5003ECB74 /* TargetCommon.xcconfig */,
+				D4C1509F21119BE5003ECB74 /* Framework.xcconfig */,
+				D4C150A021119BE5003ECB74 /* Test.xcconfig */,
+			);
+			path = Configs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,6 +234,7 @@
 /* Begin XCBuildConfiguration section */
 		D4C1509621119B65003ECB74 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4C150A221119BE5003ECB74 /* ProjectCommon.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -248,7 +265,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -268,10 +284,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -281,6 +295,7 @@
 		};
 		D4C1509721119B65003ECB74 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4C150A221119BE5003ECB74 /* ProjectCommon.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -311,7 +326,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -325,9 +339,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
@@ -338,87 +350,57 @@
 		};
 		D4C1509921119B65003ECB74 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4C1509F21119BE5003ECB74 /* Framework.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = DHNJ8N28ZZ;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ReactiveSwift/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zetasq.ReactiveSwift;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		D4C1509A21119B65003ECB74 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4C1509F21119BE5003ECB74 /* Framework.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = DHNJ8N28ZZ;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ReactiveSwift/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zetasq.ReactiveSwift;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 		D4C1509C21119B65003ECB74 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4C150A021119BE5003ECB74 /* Test.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DHNJ8N28ZZ;
-				INFOPLIST_FILE = ReactiveSwiftTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zetasq.ReactiveSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		D4C1509D21119B65003ECB74 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4C150A021119BE5003ECB74 /* Test.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DHNJ8N28ZZ;
-				INFOPLIST_FILE = ReactiveSwiftTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zetasq.ReactiveSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
