@@ -6,7 +6,7 @@
 //  Copyright © 2018 zetasq. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import Foundation;
 
 //! Project version number for ReactiveSwift.
 FOUNDATION_EXPORT double ReactiveSwiftVersionNumber;
