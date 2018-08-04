@@ -10,6 +10,26 @@ import Foundation
 
 public protocol Observer {
   
+  associatedtype Element
   
+  associatedtype Success
+  
+  associatedtype Failure: Error
+  
+  func on(_ event: EventType)
+
+}
+
+extension Observer {
+  
+  public typealias EventType = Event<Element, Success, Failure>
+  
+  public func onNext(_ element: Element) {
+    on(.next(element))
+  }
+  
+  public func onFinished(_ result: EventType.ResultType) {
+    on(.finish(result))
+  }
   
 }

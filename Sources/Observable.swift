@@ -10,6 +10,18 @@ import Foundation
 
 public protocol Observable {
   
+  associatedtype Element
   
+  associatedtype Success
+  
+  associatedtype Failure: Error
+  
+  func subscribe<T: Observer>(with observer: T) -> Disposable where T.EventType == Self.EventType
+  
+}
+
+extension Observable {
+  
+  public typealias EventType = Event<Element, Success, Failure>
   
 }

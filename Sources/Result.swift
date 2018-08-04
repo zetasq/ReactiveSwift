@@ -8,11 +8,11 @@
 
 import Foundation
 
-public enum Result<T, E: Error> {
+public enum Result<Success, Failure: Error> {
   
-  case success(T)
+  case success(Success)
   
-  case failure(E)
+  case failure(Failure)
   
 }
 
