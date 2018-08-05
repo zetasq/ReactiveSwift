@@ -9,9 +9,7 @@
 import Foundation
 
 public final class Sink<O: Observer>: Disposable {
-  
-  private var _disposed = false
-  
+
   private let _targetObserver: O
   
   private let _subscriptionHandler: (AnyObserver<O.Element, O.Success, O.Failure>) -> Disposable
@@ -24,7 +22,6 @@ public final class Sink<O: Observer>: Disposable {
   }
   
   public func dispose() {
-    _disposed = true
     _composite.dispose()
   }
   
@@ -34,7 +31,7 @@ public final class Sink<O: Observer>: Disposable {
   }
   
   private func forward(event: O.EventType) {
-    guard !_disposed else {
+    guard !_composite.isDisposed else {
       return
     }
     
