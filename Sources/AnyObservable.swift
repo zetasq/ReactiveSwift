@@ -13,7 +13,17 @@ public final class AnyObservable<Element, Success, Failure: Error>: Observable {
   private let _subscribeHandler: (AnyObserver<Element, Success, Failure>) -> Disposable
   
   public init(subscribeHandler: @escaping (AnyObserver<Element, Success, Failure>) -> Disposable) {
+    #if DEBUG
+    ObjectCounter.increment()
+    #endif
+    
     _subscribeHandler = subscribeHandler
+  }
+  
+  deinit {
+    #if DEBUG
+    ObjectCounter.decrement()
+    #endif
   }
   
   @discardableResult

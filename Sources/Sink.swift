@@ -17,8 +17,18 @@ public final class Sink<O: Observer>: Disposable {
   private let _composite = CompositeDisposable()
   
   public init(targetObserver: O, subscriptionHandler: @escaping (AnyObserver<O.Element, O.Success, O.Failure>) -> Disposable) {
+    #if DEBUG
+    ObjectCounter.increment()
+    #endif
+    
     _targetObserver = targetObserver
     _subscriptionHandler = subscriptionHandler
+  }
+  
+  deinit {
+    #if DEBUG
+    ObjectCounter.decrement()
+    #endif
   }
   
   public func dispose() {
