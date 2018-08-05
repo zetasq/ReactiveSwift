@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		D46304162115F6A800B795DF /* AnyObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46304152115F6A800B795DF /* AnyObservable.swift */; };
 		D46304182115FC0500B795DF /* Sink.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46304172115FC0500B795DF /* Sink.swift */; };
+		D46304712117403F00B795DF /* ObjectCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46304702117403F00B795DF /* ObjectCounter.swift */; };
+		D46304732117484200B795DF /* ThreadTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46304722117484200B795DF /* ThreadTracker.swift */; };
 		D4C1508E21119B65003ECB74 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4C1508421119B65003ECB74 /* ReactiveSwift.framework */; };
 		D4C1509321119B65003ECB74 /* ReactiveSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C1509221119B65003ECB74 /* ReactiveSwiftTests.swift */; };
 		D4C1509521119B65003ECB74 /* ReactiveSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = D4C1508721119B65003ECB74 /* ReactiveSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -37,6 +39,8 @@
 /* Begin PBXFileReference section */
 		D46304152115F6A800B795DF /* AnyObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyObservable.swift; sourceTree = "<group>"; };
 		D46304172115FC0500B795DF /* Sink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sink.swift; sourceTree = "<group>"; };
+		D46304702117403F00B795DF /* ObjectCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCounter.swift; sourceTree = "<group>"; };
+		D46304722117484200B795DF /* ThreadTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadTracker.swift; sourceTree = "<group>"; };
 		D4C1508421119B65003ECB74 /* ReactiveSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReactiveSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4C1508721119B65003ECB74 /* ReactiveSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReactiveSwift.h; sourceTree = "<group>"; };
 		D4C1508821119B65003ECB74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -78,6 +82,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D463046F2117401C00B795DF /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				D46304702117403F00B795DF /* ObjectCounter.swift */,
+				D46304722117484200B795DF /* ThreadTracker.swift */,
+			);
+			path = Debug;
+			sourceTree = "<group>";
+		};
 		D4C1507A21119B65003ECB74 = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +115,7 @@
 			children = (
 				D4C1508721119B65003ECB74 /* ReactiveSwift.h */,
 				D4C1508821119B65003ECB74 /* Info.plist */,
+				D463046F2117401C00B795DF /* Debug */,
 				D4DC70E02114A4C700695117 /* Result.swift */,
 				D4DC70E521159BD200695117 /* Event.swift */,
 				D4DC70DC2114A38800695117 /* Observable.swift */,
@@ -255,6 +269,8 @@
 				D4DC70E82115A64800695117 /* AnyObserver.swift in Sources */,
 				D46304162115F6A800B795DF /* AnyObservable.swift in Sources */,
 				D4DC70DD2114A38800695117 /* Observable.swift in Sources */,
+				D46304732117484200B795DF /* ThreadTracker.swift in Sources */,
+				D46304712117403F00B795DF /* ObjectCounter.swift in Sources */,
 				D4DC70EC2115CF0200695117 /* AnyDisposable.swift in Sources */,
 				D4DC70DF2114A39000695117 /* Observer.swift in Sources */,
 				D4DC70EA2115AE8700695117 /* Observer+Map.swift in Sources */,
