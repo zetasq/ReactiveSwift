@@ -27,3 +27,29 @@ public struct AnyObserver<Element, Success, Failure: Error>: Observer {
   }
 
 }
+
+extension AnyObserver {
+  
+  public init(nextHandler: @escaping (Element) -> Void) {
+    self.init(eventHandler: { event in
+      switch event {
+      case .next(let element):
+        nextHandler(element)
+      case .finish:
+        break
+      }
+    })
+  }
+  
+  public init(finishHandler: @escaping (Result<Success, Failure>) -> Void) {
+    self.init(eventHandler: { event in
+      switch event {
+      case .next:
+        break
+      case .finish(let result):
+        finishHandler(result)
+      }
+    })
+  }
+  
+}
