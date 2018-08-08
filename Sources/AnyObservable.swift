@@ -29,7 +29,6 @@ public final class AnyObservable<Element, Success, Failure: Error>: Observable {
   @discardableResult
   public func subscribe<T>(with observer: T) -> Disposable where T : Observer, EventType == T.EventType {
     let sink = Sink(targetObserver: observer, subscriptionHandler: _subscribeHandler)
-    sink.run()
     return sink
   }
   

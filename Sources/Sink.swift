@@ -12,17 +12,20 @@ public final class Sink<O: Observer>: Disposable {
 
   private let _targetObserver: O
   
-  private let _subscriptionHandler: (AnyObserver<O.Element, O.Success, O.Failure>) -> Disposable
+  private let _disposableHolder: SingleDisposableHolder
   
-  private let _composite = CompositeDisposable()
-  
-  public init(targetObserver: O, subscriptionHandler: @escaping (AnyObserver<O.Element, O.Success, O.Failure>) -> Disposable) {
+  public init(targetObserver: O, subscriptionHandler: (AnyObserver<O.Element, O.Success, O.Failure>) -> Disposable) {
     #if DEBUG
     ObjectCounter.increment()
     #endif
     
     _targetObserver = targetObserver
-    _subscriptionHandler = subscriptionHandler
+    _disposableHolder = SingleDisposableHolder()
+    
+    let bridgingObserver = AnyObserver(eventHandler: forward)
+    let subscriptionDisposable = subscriptionHandler(bridgingObserver)
+    
+    _disposableHolder.hold(subscriptionDisposable)
   }
   
   deinit {
@@ -32,16 +35,15 @@ public final class Sink<O: Observer>: Disposable {
   }
   
   public func dispose() {
-    _composite.dispose()
+    _disposableHolder.dispose()
   }
   
-  public func run() {
-    let observer = AnyObserver(eventHandler: forward)
-    _composite.insert(_subscriptionHandler(observer))
+  public var isDisposed: Bool {
+    return _disposableHolder.isDisposed
   }
   
   private func forward(event: O.EventType) {
-    guard !_composite.isDisposed else {
+    guard !_disposableHolder.isDisposed else {
       return
     }
     
