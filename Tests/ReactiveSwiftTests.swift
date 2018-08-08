@@ -38,7 +38,7 @@ class ReactiveSwiftTests: XCTestCase {
       observer.on(.next(1))
       observer.on(.next(2))
       observer.on(.next(3))
-      observer.on(.finish(.success(())))
+      observer.on(.finish(.success(Void())))
       
       return AnyDisposable(disposeHandler: {
         print("disposed")
