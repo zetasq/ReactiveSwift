@@ -14,7 +14,7 @@ public final class ThreadTracker {
   
   private var _threadEntryCountTable: [UnsafeMutableRawPointer: Int] = [:]
   
-  public func enterExclusiveSection() {
+  public func enterThreadExclusiveSection() {
     _lock.lock()
     defer {
       _lock.unlock()
@@ -34,7 +34,7 @@ public final class ThreadTracker {
     }
   }
   
-  public func leaveExclusiveSection() {
+  public func leaveThreadExclusiveSection() {
     _lock.lock()
     defer {
       _lock.unlock()

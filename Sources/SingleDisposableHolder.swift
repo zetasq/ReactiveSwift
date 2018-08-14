@@ -42,7 +42,7 @@ public final class SingleDisposableHolder: Disposable {
   }
   
   public func hold(_ disposable: Disposable) {
-    assert(!_isUsed)
+    precondition(!_isUsed)
     _isUsed = true
     
     os_unfair_lock_lock(&_lock)
