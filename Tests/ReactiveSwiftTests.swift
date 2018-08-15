@@ -7,6 +7,7 @@
 //
 
 import XCTest
+
 @testable import ReactiveSwift
 
 class ReactiveSwiftTests: XCTestCase {
@@ -48,6 +49,19 @@ class ReactiveSwiftTests: XCTestCase {
     observable.subscribe(onNext: { value in
       print(value)
     })
+  }
+  
+  func testKVO() {
+    let object = TestObject()
+    
+    object.rx.observable(forKeyPath: \.count)
+      .subscribe(onNext: { value in
+        print(value)
+      })
+    
+    for _ in 0..<100 {
+      object.count += 1
+    }
   }
   
 }

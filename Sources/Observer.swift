@@ -28,7 +28,7 @@ extension Observer {
     on(.next(element))
   }
   
-  public func onFinished(_ result: EventType.ResultType) {
+  public func onFinish(_ result: EventType.ResultType) {
     on(.finish(result))
   }
   

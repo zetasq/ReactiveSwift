@@ -14,7 +14,7 @@ extension Observable {
   public func subscribe(onEvent eventHandler: @escaping (EventType) -> Void) -> Disposable {
     return self.subscribe(with: AnyObserver(eventHandler: eventHandler))
   }
-  
+                                                                                                                                                                                                                                                                                                                                                                                                                                            
   @discardableResult
   public func subscribe(onNext nextHandler: @escaping (Element) -> Void) -> Disposable {
     return self.subscribe(with: AnyObserver(nextHandler: nextHandler))
