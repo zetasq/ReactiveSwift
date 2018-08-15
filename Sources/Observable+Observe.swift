@@ -11,17 +11,17 @@ import Foundation
 extension Observable {
   
   @discardableResult
-  public func subscribe(onEvent eventHandler: @escaping (EventType) -> Void) -> Disposable {
+  public func subscribeOnEvent(_ eventHandler: @escaping (EventType) -> Void) -> Disposable {
     return self.subscribe(with: AnyObserver(eventHandler: eventHandler))
   }
                                                                                                                                                                                                                                                                                                                                                                                                                                             
   @discardableResult
-  public func subscribe(onNext nextHandler: @escaping (Element) -> Void) -> Disposable {
+  public func subscribeOnNext(_ nextHandler: @escaping (Element) -> Void) -> Disposable {
     return self.subscribe(with: AnyObserver(nextHandler: nextHandler))
   }
   
   @discardableResult
-  public func subscribe(onFinish finishHandler: @escaping (EventType.ResultType) -> Void) -> Disposable {
+  public func subscribeOnFinish(onFinish finishHandler: @escaping (EventType.ResultType) -> Void) -> Disposable {
     return self.subscribe(with: AnyObserver(finishHandler: finishHandler))
   }
   
