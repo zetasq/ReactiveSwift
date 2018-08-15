@@ -21,6 +21,7 @@
 		D49F053C21240698003743EC /* Boxing+Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49F053B21240698003743EC /* Boxing+Observable.swift */; };
 		D49F053F212408BE003743EC /* TestObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49F053D212408B9003743EC /* TestObject.swift */; };
 		D49F06B4212448F7003743EC /* DisposeBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49F06B3212448F7003743EC /* DisposeBag.swift */; };
+		D49F06B621244C85003743EC /* Observable+Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49F06B521244C85003743EC /* Observable+Schedule.swift */; };
 		D4A9A2732116953E00014C97 /* Observable+Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A9A2722116953E00014C97 /* Observable+Map.swift */; };
 		D4C1508E21119B65003ECB74 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4C1508421119B65003ECB74 /* ReactiveSwift.framework */; };
 		D4C1509321119B65003ECB74 /* ReactiveSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C1509221119B65003ECB74 /* ReactiveSwiftTests.swift */; };
@@ -61,6 +62,7 @@
 		D49F053B21240698003743EC /* Boxing+Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Boxing+Observable.swift"; sourceTree = "<group>"; };
 		D49F053D212408B9003743EC /* TestObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestObject.swift; sourceTree = "<group>"; };
 		D49F06B3212448F7003743EC /* DisposeBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisposeBag.swift; sourceTree = "<group>"; };
+		D49F06B521244C85003743EC /* Observable+Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Schedule.swift"; sourceTree = "<group>"; };
 		D4A9A2722116953E00014C97 /* Observable+Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Map.swift"; sourceTree = "<group>"; };
 		D4C1508421119B65003ECB74 /* ReactiveSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReactiveSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4C1508721119B65003ECB74 /* ReactiveSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReactiveSwift.h; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				D4A9A2722116953E00014C97 /* Observable+Map.swift */,
 				D46304E4211A705C00B795DF /* Observable+Filter.swift */,
 				D49F05352123EA13003743EC /* Observable+Skip.swift */,
+				D49F06B521244C85003743EC /* Observable+Schedule.swift */,
 				D46304172115FC0500B795DF /* Sink.swift */,
 				D49F049E2122F688003743EC /* SingleDisposableHolder.swift */,
 				D46304152115F6A800B795DF /* AnyObservable.swift */,
@@ -316,6 +319,7 @@
 				D46304712117403F00B795DF /* ObjectCounter.swift in Sources */,
 				D4DC70EC2115CF0200695117 /* AnyDisposable.swift in Sources */,
 				D49F049F2122F688003743EC /* SingleDisposableHolder.swift in Sources */,
+				D49F06B621244C85003743EC /* Observable+Schedule.swift in Sources */,
 				D4DC70DF2114A39000695117 /* Observer.swift in Sources */,
 				D4DC70E621159BD200695117 /* Event.swift in Sources */,
 				D49F06B4212448F7003743EC /* DisposeBag.swift in Sources */,
