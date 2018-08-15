@@ -45,14 +45,9 @@ class ReactiveSwiftTests: XCTestCase {
       })
     })
     
-    observable.subscribe(with: AnyObserver(eventHandler: { event in
-      switch event {
-      case .next(let element):
-        print(element)
-      case .finish:
-        break
-      }
-    }))
+    observable.subscribe(onNext: { value in
+      print(value)
+    })
   }
   
 }
