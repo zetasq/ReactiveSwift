@@ -12,9 +12,9 @@ public final class KeyPathObservable<RootType: _KeyValueCodingAndObserving, Valu
 
   public typealias Element = ValueType
   
-  public typealias Success = Void
+  public typealias Success = Never
   
-  public typealias Failure = NSError
+  public typealias Failure = NSError // TODO: Use Never
   
   private var observation: NSKeyValueObservation?
   

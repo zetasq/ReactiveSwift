@@ -8,19 +8,18 @@
 
 import Foundation
 
-public final class Sink<O: Observer>: Disposable {
+public final class Sink<T: Observer>: Disposable {
 
-  private let _targetObserver: O
+  private let _targetObserver: T
   
-  private let _disposableHolder: SingleDisposableHolder
+  private let _disposableHolder = SingleDisposableHolder()
   
-  public init(targetObserver: O, subscriptionHandler: (AnyObserver<O.Element, O.Success, O.Failure>) -> Disposable) {
+  public init(targetObserver: T, subscriptionHandler: (AnyObserver<T.Element, T.Success, T.Failure>) -> Disposable) {
     #if DEBUG
     ObjectCounter.increment()
     #endif
     
     _targetObserver = targetObserver
-    _disposableHolder = SingleDisposableHolder()
     
     let bridgingObserver = AnyObserver(eventHandler: forward)
     let subscriptionDisposable = subscriptionHandler(bridgingObserver)
@@ -42,7 +41,7 @@ public final class Sink<O: Observer>: Disposable {
     return _disposableHolder.isDisposed
   }
   
-  private func forward(event: O.EventType) {
+  private func forward(event: T.EventType) {
     guard !_disposableHolder.isDisposed else {
       return
     }

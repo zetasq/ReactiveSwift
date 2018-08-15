@@ -41,7 +41,7 @@ public final class AnyDisposable: Disposable {
       os_unfair_lock_unlock(&_lock)
     }
     
-    return isDisposed
+    return _isDisposed
   }
   
 }

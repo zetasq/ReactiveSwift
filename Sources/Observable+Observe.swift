@@ -21,7 +21,7 @@ extension Observable {
   }
   
   @discardableResult
-  public func subscribeOnFinish(onFinish finishHandler: @escaping (EventType.ResultType) -> Void) -> Disposable {
+  public func subscribeOnFinish(_ finishHandler: @escaping (EventType.ResultType) -> Void) -> Disposable {
     return self.subscribe(with: AnyObserver(finishHandler: finishHandler))
   }
   
