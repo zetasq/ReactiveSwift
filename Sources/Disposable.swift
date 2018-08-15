@@ -15,3 +15,11 @@ public protocol Disposable {
   var isDisposed: Bool { get }
   
 }
+
+extension Disposable {
+  
+  public func add(to disposeBag: DisposeBag) {
+    disposeBag.add(self)
+  }
+  
+}
