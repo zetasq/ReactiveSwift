@@ -18,7 +18,17 @@ public final class SingleDisposableHolder: Disposable {
   
   private var _isUsed = false
   
-  public init() {}
+  public init() {
+    #if DEBUG
+    ObjectCounter.increment()
+    #endif
+  }
+  
+  deinit {
+    #if DEBUG
+    ObjectCounter.decrement()
+    #endif
+  }
   
   public var isDisposed: Bool {
     os_unfair_lock_lock(&_lock)

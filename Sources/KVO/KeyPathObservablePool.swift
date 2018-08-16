@@ -37,7 +37,17 @@ public final class KeyPathObservablePool<RootType: AnyObject & _KeyValueCodingAn
   private var _lock = os_unfair_lock()
   
   internal init(object: RootType) {
+    #if DEBUG
+    ObjectCounter.increment()
+    #endif
+    
     self.object = object
+  }
+  
+  deinit {
+    #if DEBUG
+    ObjectCounter.decrement()
+    #endif
   }
   
   public func observable<ValueType>(forKeyPath keyPath: KeyPath<RootType, ValueType>) -> KeyPathObservable<RootType, ValueType> {

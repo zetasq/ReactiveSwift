@@ -35,48 +35,60 @@ class ReactiveSwiftTests: XCTestCase {
   }
   
   func testObservable() {
-    let observable = AnyObservable<Int, Void, NSError>(subscribeHandler: { observer in
-      observer.on(.next(1))
-      observer.on(.next(2))
-      observer.on(.next(3))
-      observer.on(.finish(.success(Void())))
-      
-      return AnyDisposable(disposeHandler: {
-        print("disposed")
+    do {
+      let observable = AnyObservable<Int, Void, NSError>(subscribeHandler: { observer in
+        observer.on(.next(1))
+        observer.on(.next(2))
+        observer.on(.next(3))
+        observer.on(.finish(.success(Void())))
+        
+        return AnyDisposable(disposeHandler: {
+          print("disposed")
+        })
       })
-    })
-    
-    observable.subscribeOnNext { value in
-      print(value)
+      
+      observable.subscribeOnNext { value in
+        print(value)
+      }
     }
+
+    XCTAssert(ObjectCounter.currentCount == 0)
   }
   
   func testKVO() {
-    let object = TestObject()
-    
-    object.rx.observable(forKeyPath: \.count)
-      .subscribeOnNext { value in
-        print(value)
+    do {
+      let object = TestObject()
+      
+      object.rx.observable(forKeyPath: \.count)
+        .subscribeOnNext { value in
+          print(value)
       }
-    
-    for _ in 0..<10 {
-      object.count += 1
+      
+      for _ in 0..<10 {
+        object.count += 1
+      }
     }
+
+    XCTAssert(ObjectCounter.currentCount == 0)
   }
   
   func testCombineLatest() {
-    let object1 = TestObject()
-    let object2 = TestObject()
-    
-    Rx.combineLatest(object1.rx.observable(forKeyPath: \.count), object2.rx.observable(forKeyPath: \.count))
-      .subscribeOnNext { (value1, value2) in
-        print("\(value1), \(value2)")
+    do {
+      let object1 = TestObject()
+      let object2 = TestObject()
+      
+      Rx.combineLatest(object1.rx.observable(forKeyPath: \.count), object2.rx.observable(forKeyPath: \.count))
+        .subscribeOnNext { (value1, value2) in
+          print("\(value1), \(value2)")
+      }
+      
+      for i in 0..<5 {
+        object1.count += 1
+        object2.count = i
+      }
     }
-    
-    for i in 0..<5 {
-      object1.count += 1
-      object2.count = i
-    }
+
+    XCTAssert(ObjectCounter.currentCount == 0)
   }
   
 }

@@ -19,7 +19,7 @@ public struct AnyObserver<Element, Success, Failure: Error>: Observer {
   }
   
   public init<O: Observer>(_ observer: O) where O.EventType == EventType {
-    self.eventHandler = observer.on
+    self.init(eventHandler: observer.on)
   }
   
   public func on(_ event: Event<Element, Success, Failure>) {

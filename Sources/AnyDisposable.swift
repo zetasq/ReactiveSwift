@@ -17,7 +17,17 @@ public final class AnyDisposable: Disposable {
   private var _lock = os_unfair_lock()
   
   public init(disposeHandler: @escaping () -> Void) {
+    #if DEBUG
+    ObjectCounter.increment()
+    #endif
+    
     self.disposeHandler = disposeHandler
+  }
+  
+  deinit {
+    #if DEBUG
+    ObjectCounter.decrement()
+    #endif
   }
   
   public func dispose() {

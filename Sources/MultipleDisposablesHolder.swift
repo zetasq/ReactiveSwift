@@ -16,16 +16,16 @@ public final class MultipleDisposablesHolder: Disposable {
   
   private var _isDisposed = false
   
-  public init(disposables: Disposable...) {
-    for disposable in disposables {
-      _disposableTable.add(disposable)
-    }
+  public init() {
+    #if DEBUG
+    ObjectCounter.increment()
+    #endif
   }
   
-  public init(disposables: [Disposable]) {
-    for disposable in disposables {
-      _disposableTable.add(disposable)
-    }
+  deinit {
+    #if DEBUG
+    ObjectCounter.decrement()
+    #endif
   }
   
   public var isDisposed: Bool {
