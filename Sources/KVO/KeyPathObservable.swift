@@ -25,6 +25,11 @@ public final class KeyPathObservable<RootType: _KeyValueCodingAndObserving, Valu
   private var _bag_lock = os_unfair_lock()
   
   internal init(object: RootType, keyPath: KeyPath<RootType, ValueType>) {
+    #if DEBUG
+    ObjectCounter.increment()
+    #endif
+    
+    // KeyPathObservable will be retained by the object, so we can use weak self (this also prevents retain cycle in KeyPathObservable)
     self.observation = object.observe(keyPath, options: [.initial, .new]) { [weak self] _, change in
       guard let `self` = self else { return }
 
@@ -51,6 +56,12 @@ public final class KeyPathObservable<RootType: _KeyValueCodingAndObserving, Valu
     }
   }
   
+  deinit {
+    #if DEBUG
+    ObjectCounter.decrement()
+    #endif
+  }
+
   public func subscribe<T>(with observer: T) -> Disposable where T : Observer, KeyPathObservable.Element == T.Element, KeyPathObservable.Failure == T.Failure, KeyPathObservable.Success == T.Success {
     let sink = Sink(targetObserver: observer, subscriptionHandler: { (sinkObserver) -> Disposable in
       do {

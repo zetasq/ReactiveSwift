@@ -12,16 +12,20 @@ public final class MultipleDisposablesHolder: Disposable {
   
   private var _lock = os_unfair_lock()
   
-  private var _disposables: [Disposable] = []
+  private let _disposableTable = NSHashTable<AnyObject>.weakObjects()
   
   private var _isDisposed = false
   
   public init(disposables: Disposable...) {
-    _disposables = disposables
+    for disposable in disposables {
+      _disposableTable.add(disposable)
+    }
   }
   
   public init(disposables: [Disposable]) {
-    _disposables = disposables
+    for disposable in disposables {
+      _disposableTable.add(disposable)
+    }
   }
   
   public var isDisposed: Bool {
@@ -41,11 +45,11 @@ public final class MultipleDisposablesHolder: Disposable {
     
     _isDisposed = true
     
-    for disposable in _disposables {
-      disposable.dispose()
+    for obj in _disposableTable.objectEnumerator() {
+      (obj as! Disposable).dispose()
     }
-    
-    _disposables.removeAll()
+
+    _disposableTable.removeAllObjects()
   }
 
   public func hold(_ disposable: Disposable) {
@@ -59,7 +63,7 @@ public final class MultipleDisposablesHolder: Disposable {
       return
     }
     
-    _disposables.append(disposable)
+    _disposableTable.add(disposable)
   }
 
 }

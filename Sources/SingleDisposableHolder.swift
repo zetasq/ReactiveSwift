@@ -12,7 +12,7 @@ public final class SingleDisposableHolder: Disposable {
   
   private var _lock = os_unfair_lock()
   
-  private var _disposable: Disposable?
+  private weak var _disposable: Disposable?
   
   private var _isDisposed = false
   

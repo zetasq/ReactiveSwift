@@ -23,8 +23,18 @@ public final class CombineLatestObservable2<
   private let _observable2: O2
   
   public init(_ observable1: O1, _ observable2: O2) {
+    #if DEBUG
+    ObjectCounter.increment()
+    #endif
+    
     self._observable1 = observable1
     self._observable2 = observable2
+  }
+  
+  deinit {
+    #if DEBUG
+    ObjectCounter.decrement()
+    #endif
   }
   
   public func subscribe<T: Observer>(with observer: T) -> Disposable where T.EventType == CombineLatestObservable2.EventType {

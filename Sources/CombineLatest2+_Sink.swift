@@ -32,8 +32,7 @@ extension CombineLatestObservable2 {
       
       _targetObserver = targetObserver
 
-      let subscriptionDisposable1 = observable1.subscribeOnNext { [weak self] element1 in
-        guard let `self` = self else { return }
+      let subscriptionDisposable1 = observable1.subscribeOnNext { element1 in
         os_unfair_lock_lock(&self._lock)
         self._lastValue1 = element1
         os_unfair_lock_unlock(&self._lock)
@@ -42,8 +41,7 @@ extension CombineLatestObservable2 {
       }
       _disposableHolder.hold(subscriptionDisposable1)
 
-      let subscriptionDisposable2 = observable2.subscribeOnNext { [weak self] element2 in
-        guard let `self` = self else { return }
+      let subscriptionDisposable2 = observable2.subscribeOnNext { element2 in
         os_unfair_lock_lock(&self._lock)
         self._lastValue2 = element2
         os_unfair_lock_unlock(&self._lock)

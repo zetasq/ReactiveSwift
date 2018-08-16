@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol Disposable {
+public protocol Disposable: AnyObject {
   
   func dispose()
   

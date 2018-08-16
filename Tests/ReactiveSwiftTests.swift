@@ -59,8 +59,23 @@ class ReactiveSwiftTests: XCTestCase {
         print(value)
       }
     
-    for _ in 0..<100 {
+    for _ in 0..<10 {
       object.count += 1
+    }
+  }
+  
+  func testCombineLatest() {
+    let object1 = TestObject()
+    let object2 = TestObject()
+    
+    Rx.combineLatest(object1.rx.observable(forKeyPath: \.count), object2.rx.observable(forKeyPath: \.count))
+      .subscribeOnNext { (value1, value2) in
+        print("\(value1), \(value2)")
+    }
+    
+    for i in 0..<5 {
+      object1.count += 1
+      object2.count = i
     }
   }
   

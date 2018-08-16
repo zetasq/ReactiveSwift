@@ -21,7 +21,7 @@ public final class Sink<T: Observer>: Disposable {
     
     _targetObserver = targetObserver
     
-    let bridgingObserver = AnyObserver(eventHandler: forward)
+    let bridgingObserver = AnyObserver(eventHandler: self.forward)
     let subscriptionDisposable = subscriptionHandler(bridgingObserver)
     
     _disposableHolder.hold(subscriptionDisposable)
