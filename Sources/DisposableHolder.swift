@@ -1,5 +1,5 @@
 //
-//  SingleDisposableHolder.swift
+//  DisposableHolder.swift
 //  ReactiveSwift
 //
 //  Created by Zhu Shengqi on 14/8/2018.
@@ -8,11 +8,11 @@
 
 import Foundation
 
-public final class SingleDisposableHolder: Disposable {
+public final class DisposableHolder: Disposable {
   
   private var _lock = os_unfair_lock()
   
-  private weak var _disposable: Disposable?
+  private var _disposable: Disposable?
   
   private var _isDisposed = false
   
@@ -25,9 +25,7 @@ public final class SingleDisposableHolder: Disposable {
   }
   
   deinit {
-    #if DEBUG
     ObjectCounter.decrement()
-    #endif
   }
   
   public var isDisposed: Bool {

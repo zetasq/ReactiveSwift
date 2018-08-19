@@ -51,7 +51,7 @@ class ReactiveSwiftTests: XCTestCase {
         print(value)
       }
     }
-
+    
     XCTAssert(ObjectCounter.currentCount == 0)
   }
   
@@ -68,26 +68,32 @@ class ReactiveSwiftTests: XCTestCase {
         object.count += 1
       }
     }
-
+    
     XCTAssert(ObjectCounter.currentCount == 0)
   }
   
   func testCombineLatest() {
-    do {
+    autoreleasepool {
       let object1 = TestObject()
       let object2 = TestObject()
       
-      Rx.combineLatest(object1.rx.observable(forKeyPath: \.count), object2.rx.observable(forKeyPath: \.count))
+      let disposable = Rx.combineLatest(object1.rx.observable(forKeyPath: \.count), object2.rx.observable(forKeyPath: \.count))
         .subscribeOnNext { (value1, value2) in
           print("\(value1), \(value2)")
       }
       
-      for i in 0..<5 {
+      for _ in 0..<5 {
         object1.count += 1
-        object2.count = i
+        object2.count += 1
+        
+        if object1.count == 3 {
+          disposable.dispose()
+        }
       }
+      
+      print("DDD")
     }
-
+    
     XCTAssert(ObjectCounter.currentCount == 0)
   }
   

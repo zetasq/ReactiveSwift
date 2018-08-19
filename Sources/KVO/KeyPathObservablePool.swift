@@ -49,7 +49,7 @@ public final class KeyPathObservablePool<RootType: AnyObject & _KeyValueCodingAn
     ObjectCounter.decrement()
     #endif
   }
-  
+
   public func observable<ValueType>(forKeyPath keyPath: KeyPath<RootType, ValueType>) -> KeyPathObservable<RootType, ValueType> {
     os_unfair_lock_lock(&_lock)
     defer {

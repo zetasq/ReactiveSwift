@@ -1,5 +1,5 @@
 //
-//  MultipleDisposablesHolder.swift
+//  WeakDisposableHolder.swift
 //  ReactiveSwift
 //
 //  Created by Zhu Shengqi on 2018/8/4.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public final class MultipleDisposablesHolder: Disposable {
+public final class WeakDisposablesHolder: Disposable {
   
   private var _lock = os_unfair_lock()
   

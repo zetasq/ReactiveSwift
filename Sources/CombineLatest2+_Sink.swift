@@ -14,7 +14,8 @@ extension CombineLatestObservable2 {
     
     private let _targetObserver: T
     
-    private let _disposableHolder = MultipleDisposablesHolder()
+    // This sink should be only used as a intermediate between the original Sink and the target observer, so we use weak semantics here to avoid retain cycle
+    private let _disposableHolder = WeakDisposablesHolder()
     
     private var _lastValue1: O1.Element?
     private var _lastValue2: O2.Element?
@@ -26,29 +27,30 @@ extension CombineLatestObservable2 {
       observable1: O1,
       observable2: O2
       ) {
+      
       #if DEBUG
       ObjectCounter.increment()
       #endif
       
       _targetObserver = targetObserver
 
-      let subscriptionDisposable1 = observable1.subscribeOnNext { element1 in
+      let subscriber1 = observable1.subscribeOnNext { element1 in
         os_unfair_lock_lock(&self._lock)
         self._lastValue1 = element1
         os_unfair_lock_unlock(&self._lock)
         
         self.forwardIfNeeded()
       }
-      _disposableHolder.hold(subscriptionDisposable1)
+      _disposableHolder.hold(subscriber1)
 
-      let subscriptionDisposable2 = observable2.subscribeOnNext { element2 in
+      let subscriber2 = observable2.subscribeOnNext { element2 in
         os_unfair_lock_lock(&self._lock)
         self._lastValue2 = element2
         os_unfair_lock_unlock(&self._lock)
         
         self.forwardIfNeeded()
       }
-      _disposableHolder.hold(subscriptionDisposable2)
+      _disposableHolder.hold(subscriber2)
     }
     
     deinit {

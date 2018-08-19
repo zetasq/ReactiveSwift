@@ -34,6 +34,10 @@ struct Bag<Element> {
     return key
   }
   
+  func peekNextKey() -> BagKey {
+    return _nextKey
+  }
+  
   @discardableResult
   mutating func removeElement(forKey key: BagKey) -> Element? {
     return _table.removeValue(forKey: key)
