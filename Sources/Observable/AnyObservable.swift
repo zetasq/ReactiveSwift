@@ -30,7 +30,7 @@ public final class AnyObservable<Element, Success, Failure: Error>: Observable {
   public func subscribe<T>(with observer: T) -> Disposable where T : Observer, EventType == T.EventType {
     let sink = Sink(targetObserver: observer)
     
-    let bridgingObserver = AnyObserver.init(eventHandler: sink.forward)
+    let bridgingObserver = AnyObserver(eventHandler: sink.forward)
     let disposable = _subscribeHandler(bridgingObserver)
     
     sink.setOriginalDisposable(disposable)

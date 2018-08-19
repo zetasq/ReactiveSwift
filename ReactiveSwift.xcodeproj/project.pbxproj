@@ -39,7 +39,6 @@
 		D4DC70E82115A64800695117 /* AnyObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DC70E72115A64800695117 /* AnyObserver.swift */; };
 		D4DC70EC2115CF0200695117 /* AnyDisposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DC70EB2115CF0200695117 /* AnyDisposable.swift */; };
 		D4DC70F02115DB3C00695117 /* WeakDisposableSetHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DC70EF2115DB3C00695117 /* WeakDisposableSetHolder.swift */; };
-		D4DC70F22115DF1200695117 /* Bag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DC70F12115DF1200695117 /* Bag.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,7 +91,6 @@
 		D4DC70E72115A64800695117 /* AnyObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyObserver.swift; sourceTree = "<group>"; };
 		D4DC70EB2115CF0200695117 /* AnyDisposable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyDisposable.swift; sourceTree = "<group>"; };
 		D4DC70EF2115DB3C00695117 /* WeakDisposableSetHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakDisposableSetHolder.swift; sourceTree = "<group>"; };
-		D4DC70F12115DF1200695117 /* Bag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bag.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +119,70 @@
 				D46304722117484200B795DF /* ThreadTracker.swift */,
 			);
 			path = Debug;
+			sourceTree = "<group>";
+		};
+		D47327B12129BFF400A453EA /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				D4DC70E02114A4C700695117 /* Result.swift */,
+				D4DC70E521159BD200695117 /* Event.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		D47327B22129C00200A453EA /* Observable */ = {
+			isa = PBXGroup;
+			children = (
+				D4DC70DC2114A38800695117 /* Observable.swift */,
+				D49F04D02123CBF1003743EC /* Observable+Observe.swift */,
+				D46304152115F6A800B795DF /* AnyObservable.swift */,
+				D4A9A2722116953E00014C97 /* Observable+Map.swift */,
+				D46304E4211A705C00B795DF /* Observable+Filter.swift */,
+				D49F05352123EA13003743EC /* Observable+Skip.swift */,
+				D49F06B521244C85003743EC /* Observable+Schedule.swift */,
+			);
+			path = Observable;
+			sourceTree = "<group>";
+		};
+		D47327B32129C02900A453EA /* Observable+Combine */ = {
+			isa = PBXGroup;
+			children = (
+				D47327A9212486A600A453EA /* Rx+CombineLatest.swift */,
+				D41BB1852124787B00DF7ED1 /* CombineLatest2.swift */,
+				D41BB18721247C2600DF7ED1 /* CombineLatest2+_Sink.swift */,
+			);
+			path = "Observable+Combine";
+			sourceTree = "<group>";
+		};
+		D47327B42129C0A200A453EA /* Observer */ = {
+			isa = PBXGroup;
+			children = (
+				D4DC70DE2114A39000695117 /* Observer.swift */,
+				D4DC70E72115A64800695117 /* AnyObserver.swift */,
+			);
+			path = Observer;
+			sourceTree = "<group>";
+		};
+		D47327B52129C0C400A453EA /* Disposable */ = {
+			isa = PBXGroup;
+			children = (
+				D4DC70E2211545B500695117 /* Disposable.swift */,
+				D4DC70EB2115CF0200695117 /* AnyDisposable.swift */,
+				D47327AD2129B96E00A453EA /* ProxyDisposable.swift */,
+				D49F049E2122F688003743EC /* WeakDisposableHolder.swift */,
+				D4DC70EF2115DB3C00695117 /* WeakDisposableSetHolder.swift */,
+				D49F06B3212448F7003743EC /* DisposeBag.swift */,
+				D46304172115FC0500B795DF /* Sink.swift */,
+			);
+			path = Disposable;
+			sourceTree = "<group>";
+		};
+		D47327B62129C11000A453EA /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				D49F05322123DD6F003743EC /* KVO */,
+			);
+			path = Foundation;
 			sourceTree = "<group>";
 		};
 		D49F05322123DD6F003743EC /* KVO */ = {
@@ -158,31 +220,14 @@
 			children = (
 				D4C1508721119B65003ECB74 /* ReactiveSwift.h */,
 				D4C1508821119B65003ECB74 /* Info.plist */,
-				D463046F2117401C00B795DF /* Debug */,
-				D4DC70E02114A4C700695117 /* Result.swift */,
-				D4DC70E521159BD200695117 /* Event.swift */,
-				D4DC70DC2114A38800695117 /* Observable.swift */,
-				D49F04D02123CBF1003743EC /* Observable+Observe.swift */,
-				D4A9A2722116953E00014C97 /* Observable+Map.swift */,
-				D46304E4211A705C00B795DF /* Observable+Filter.swift */,
-				D49F05352123EA13003743EC /* Observable+Skip.swift */,
-				D49F06B521244C85003743EC /* Observable+Schedule.swift */,
 				D47327AB212486E700A453EA /* Rx.swift */,
-				D47327A9212486A600A453EA /* Rx+CombineLatest.swift */,
-				D41BB1852124787B00DF7ED1 /* CombineLatest2.swift */,
-				D41BB18721247C2600DF7ED1 /* CombineLatest2+_Sink.swift */,
-				D46304172115FC0500B795DF /* Sink.swift */,
-				D46304152115F6A800B795DF /* AnyObservable.swift */,
-				D4DC70DE2114A39000695117 /* Observer.swift */,
-				D4DC70E72115A64800695117 /* AnyObserver.swift */,
-				D4DC70E2211545B500695117 /* Disposable.swift */,
-				D47327AD2129B96E00A453EA /* ProxyDisposable.swift */,
-				D4DC70EB2115CF0200695117 /* AnyDisposable.swift */,
-				D4DC70F12115DF1200695117 /* Bag.swift */,
-				D49F049E2122F688003743EC /* WeakDisposableHolder.swift */,
-				D4DC70EF2115DB3C00695117 /* WeakDisposableSetHolder.swift */,
-				D49F06B3212448F7003743EC /* DisposeBag.swift */,
-				D49F05322123DD6F003743EC /* KVO */,
+				D463046F2117401C00B795DF /* Debug */,
+				D47327B12129BFF400A453EA /* Data */,
+				D47327B22129C00200A453EA /* Observable */,
+				D47327B32129C02900A453EA /* Observable+Combine */,
+				D47327B42129C0A200A453EA /* Observer */,
+				D47327B52129C0C400A453EA /* Disposable */,
+				D47327B62129C11000A453EA /* Foundation */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -317,7 +362,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4DC70F22115DF1200695117 /* Bag.swift in Sources */,
 				D4DC70F02115DB3C00695117 /* WeakDisposableSetHolder.swift in Sources */,
 				D46304182115FC0500B795DF /* Sink.swift in Sources */,
 				D4DC70E12114A4C700695117 /* Result.swift in Sources */,
