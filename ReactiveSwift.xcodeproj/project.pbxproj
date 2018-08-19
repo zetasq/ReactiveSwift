@@ -16,7 +16,8 @@
 		D46304E5211A705C00B795DF /* Observable+Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46304E4211A705C00B795DF /* Observable+Filter.swift */; };
 		D47327AA212486A600A453EA /* Rx+CombineLatest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47327A9212486A600A453EA /* Rx+CombineLatest.swift */; };
 		D47327AC212486E700A453EA /* Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47327AB212486E700A453EA /* Rx.swift */; };
-		D49F049F2122F688003743EC /* DisposableHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49F049E2122F688003743EC /* DisposableHolder.swift */; };
+		D47327AE2129B96E00A453EA /* ProxyDisposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47327AD2129B96E00A453EA /* ProxyDisposable.swift */; };
+		D49F049F2122F688003743EC /* WeakDisposableHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49F049E2122F688003743EC /* WeakDisposableHolder.swift */; };
 		D49F04D12123CBF1003743EC /* Observable+Observe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49F04D02123CBF1003743EC /* Observable+Observe.swift */; };
 		D49F05342123DDB2003743EC /* KeyPathObservablePool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49F05332123DDB2003743EC /* KeyPathObservablePool.swift */; };
 		D49F05362123EA13003743EC /* Observable+Skip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49F05352123EA13003743EC /* Observable+Skip.swift */; };
@@ -37,7 +38,7 @@
 		D4DC70E621159BD200695117 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DC70E521159BD200695117 /* Event.swift */; };
 		D4DC70E82115A64800695117 /* AnyObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DC70E72115A64800695117 /* AnyObserver.swift */; };
 		D4DC70EC2115CF0200695117 /* AnyDisposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DC70EB2115CF0200695117 /* AnyDisposable.swift */; };
-		D4DC70F02115DB3C00695117 /* WeakDisposablesHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DC70EF2115DB3C00695117 /* WeakDisposablesHolder.swift */; };
+		D4DC70F02115DB3C00695117 /* WeakDisposableSetHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DC70EF2115DB3C00695117 /* WeakDisposableSetHolder.swift */; };
 		D4DC70F22115DF1200695117 /* Bag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DC70F12115DF1200695117 /* Bag.swift */; };
 /* End PBXBuildFile section */
 
@@ -61,7 +62,8 @@
 		D46304E4211A705C00B795DF /* Observable+Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Filter.swift"; sourceTree = "<group>"; };
 		D47327A9212486A600A453EA /* Rx+CombineLatest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+CombineLatest.swift"; sourceTree = "<group>"; };
 		D47327AB212486E700A453EA /* Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rx.swift; sourceTree = "<group>"; };
-		D49F049E2122F688003743EC /* DisposableHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisposableHolder.swift; sourceTree = "<group>"; };
+		D47327AD2129B96E00A453EA /* ProxyDisposable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyDisposable.swift; sourceTree = "<group>"; };
+		D49F049E2122F688003743EC /* WeakDisposableHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakDisposableHolder.swift; sourceTree = "<group>"; };
 		D49F04D02123CBF1003743EC /* Observable+Observe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Observe.swift"; sourceTree = "<group>"; };
 		D49F05332123DDB2003743EC /* KeyPathObservablePool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPathObservablePool.swift; sourceTree = "<group>"; };
 		D49F05352123EA13003743EC /* Observable+Skip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Skip.swift"; sourceTree = "<group>"; };
@@ -89,7 +91,7 @@
 		D4DC70E521159BD200695117 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		D4DC70E72115A64800695117 /* AnyObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyObserver.swift; sourceTree = "<group>"; };
 		D4DC70EB2115CF0200695117 /* AnyDisposable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyDisposable.swift; sourceTree = "<group>"; };
-		D4DC70EF2115DB3C00695117 /* WeakDisposablesHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakDisposablesHolder.swift; sourceTree = "<group>"; };
+		D4DC70EF2115DB3C00695117 /* WeakDisposableSetHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakDisposableSetHolder.swift; sourceTree = "<group>"; };
 		D4DC70F12115DF1200695117 /* Bag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bag.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -174,10 +176,11 @@
 				D4DC70DE2114A39000695117 /* Observer.swift */,
 				D4DC70E72115A64800695117 /* AnyObserver.swift */,
 				D4DC70E2211545B500695117 /* Disposable.swift */,
+				D47327AD2129B96E00A453EA /* ProxyDisposable.swift */,
 				D4DC70EB2115CF0200695117 /* AnyDisposable.swift */,
 				D4DC70F12115DF1200695117 /* Bag.swift */,
-				D49F049E2122F688003743EC /* DisposableHolder.swift */,
-				D4DC70EF2115DB3C00695117 /* WeakDisposablesHolder.swift */,
+				D49F049E2122F688003743EC /* WeakDisposableHolder.swift */,
+				D4DC70EF2115DB3C00695117 /* WeakDisposableSetHolder.swift */,
 				D49F06B3212448F7003743EC /* DisposeBag.swift */,
 				D49F05322123DD6F003743EC /* KVO */,
 			);
@@ -315,7 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4DC70F22115DF1200695117 /* Bag.swift in Sources */,
-				D4DC70F02115DB3C00695117 /* WeakDisposablesHolder.swift in Sources */,
+				D4DC70F02115DB3C00695117 /* WeakDisposableSetHolder.swift in Sources */,
 				D46304182115FC0500B795DF /* Sink.swift in Sources */,
 				D4DC70E12114A4C700695117 /* Result.swift in Sources */,
 				D4DC70E3211545B500695117 /* Disposable.swift in Sources */,
@@ -333,11 +336,12 @@
 				D46304732117484200B795DF /* ThreadTracker.swift in Sources */,
 				D46304712117403F00B795DF /* ObjectCounter.swift in Sources */,
 				D4DC70EC2115CF0200695117 /* AnyDisposable.swift in Sources */,
-				D49F049F2122F688003743EC /* DisposableHolder.swift in Sources */,
+				D49F049F2122F688003743EC /* WeakDisposableHolder.swift in Sources */,
 				D49F06B621244C85003743EC /* Observable+Schedule.swift in Sources */,
 				D4DC70DF2114A39000695117 /* Observer.swift in Sources */,
 				D41BB18821247C2600DF7ED1 /* CombineLatest2+_Sink.swift in Sources */,
 				D4DC70E621159BD200695117 /* Event.swift in Sources */,
+				D47327AE2129B96E00A453EA /* ProxyDisposable.swift in Sources */,
 				D49F06B4212448F7003743EC /* DisposeBag.swift in Sources */,
 				D49F05382123EC50003743EC /* KeyPathObservable.swift in Sources */,
 				D49F053C21240698003743EC /* Boxing+Observable.swift in Sources */,

@@ -15,7 +15,7 @@ extension CombineLatestObservable2 {
     private let _targetObserver: T
     
     // This sink should be only used as a intermediate between the original Sink and the target observer, so we use weak semantics here to avoid retain cycle
-    private let _disposableHolder = WeakDisposablesHolder()
+    private let _disposableHolder = WeakDisposableSetHolder()
     
     private var _lastValue1: O1.Element?
     private var _lastValue2: O2.Element?

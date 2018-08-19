@@ -21,8 +21,8 @@ public final class KeyPathObservable<RootType: _KeyValueCodingAndObserving, Valu
   private var _lastValue: ValueType?
   private var _lastValue_lock = os_unfair_lock()
   
-  private var _bag = Bag<Sink<Element, Success, Failure>>()
-  private var _bag_lock = os_unfair_lock()
+  private var _disposableToSinkTable: [ProxyDisposable: Sink<Element, Success, Failure>] = [:]
+  private var _tableLock = os_unfair_lock()
   
   internal init(object: RootType, keyPath: KeyPath<RootType, ValueType>) {
     #if DEBUG
@@ -46,10 +46,10 @@ public final class KeyPathObservable<RootType: _KeyValueCodingAndObserving, Valu
         self._lastValue = newValue
       }
       
-      os_unfair_lock_lock(&self._bag_lock)
-      os_unfair_lock_unlock(&self._bag_lock)
+      os_unfair_lock_lock(&self._tableLock)
+      os_unfair_lock_unlock(&self._tableLock)
       
-      for sink in self._bag {
+      for sink in self._disposableToSinkTable.values {
         sink.forward(event: .next(newValue))
       }
     }
@@ -63,26 +63,18 @@ public final class KeyPathObservable<RootType: _KeyValueCodingAndObserving, Valu
 
   public func subscribe<T>(with observer: T) -> Disposable where T : Observer, KeyPathObservable.Element == T.Element, KeyPathObservable.Failure == T.Failure, KeyPathObservable.Success == T.Success {
     
-    os_unfair_lock_lock(&_bag_lock)
+    os_unfair_lock_lock(&_tableLock)
     defer {
-      os_unfair_lock_unlock(&_bag_lock)
+      os_unfair_lock_unlock(&_tableLock)
     }
     
-    let nextKey = _bag.peekNextKey()
-    let unsubscriber = AnyDisposable { [weak self] in
-      guard let `self` = self else { return }
-      
-      os_unfair_lock_lock(&self._bag_lock)
-      defer {
-        os_unfair_lock_unlock(&self._bag_lock)
-      }
-      
-      self._bag.removeElement(forKey: nextKey)
-    }
+    let disposable = ProxyDisposable()
+    disposable.delegate = self
     
     let sink = Sink(targetObserver: observer)
-    _bag.insert(sink)
-    sink.setOriginalDisposable(unsubscriber)
+    _disposableToSinkTable[disposable] = sink
+    
+    sink.setOriginalDisposable(disposable)
     
     do {
       os_unfair_lock_lock(&_lastValue_lock)
@@ -96,6 +88,21 @@ public final class KeyPathObservable<RootType: _KeyValueCodingAndObserving, Valu
     }
     
     return sink
+  }
+  
+}
+
+extension KeyPathObservable: ProxyDisposableDelegate {
+  
+  func proxyDisposableRequestDispose(_ disposable: ProxyDisposable) {
+    os_unfair_lock_lock(&_tableLock)
+    defer {
+      os_unfair_lock_unlock(&_tableLock)
+    }
+    
+    guard let _ = _disposableToSinkTable.removeValue(forKey: disposable) else {
+      assert(false, "No disposable exist in table when disposing in KeyPathObservable")
+    }
   }
   
 }

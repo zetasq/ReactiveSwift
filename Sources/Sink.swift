@@ -12,7 +12,7 @@ public final class Sink<Element, Success, Failure: Error>: Disposable {
   
   private let _typeErasedTargetObserver: AnyObserver<Element, Success, Failure>
   
-  private let _disposableHolder = DisposableHolder()
+  private let _disposableHolder = WeakDisposableHolder()
   
   public init<T: Observer>(targetObserver: T)
     where T.Element == Element, T.Success == Success, T.Failure == Failure {
@@ -46,7 +46,7 @@ public final class Sink<Element, Success, Failure: Error>: Disposable {
     _disposableHolder.hold(originalDisposable)
   }
   
-  func forward(event: Event<Element, Success, Failure>) {
+  internal func forward(event: Event<Element, Success, Failure>) {
     guard !_disposableHolder.isDisposed else {
       return
     }

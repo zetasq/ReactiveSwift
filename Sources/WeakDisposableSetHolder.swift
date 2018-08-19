@@ -1,22 +1,20 @@
 //
-//  DisposableHolder.swift
+//  WeakDisposableSetHolder.swift
 //  ReactiveSwift
 //
-//  Created by Zhu Shengqi on 14/8/2018.
+//  Created by Zhu Shengqi on 2018/8/4.
 //  Copyright © 2018 zetasq. All rights reserved.
 //
 
 import Foundation
 
-public final class DisposableHolder: Disposable {
+public final class WeakDisposableSetHolder: Disposable {
   
   private var _lock = os_unfair_lock()
   
-  private var _disposable: Disposable?
+  private let _disposableTable = NSHashTable<AnyObject>.weakObjects()
   
   private var _isDisposed = false
-  
-  private var _isUsed = false
   
   public init() {
     #if DEBUG
@@ -25,7 +23,9 @@ public final class DisposableHolder: Disposable {
   }
   
   deinit {
+    #if DEBUG
     ObjectCounter.decrement()
+    #endif
   }
   
   public var isDisposed: Bool {
@@ -45,14 +45,14 @@ public final class DisposableHolder: Disposable {
     
     _isDisposed = true
     
-    _disposable?.dispose()
-    _disposable = nil
+    for obj in _disposableTable.objectEnumerator() {
+      (obj as! Disposable).dispose()
+    }
+
+    _disposableTable.removeAllObjects()
   }
-  
+
   public func hold(_ disposable: Disposable) {
-    precondition(!_isUsed)
-    _isUsed = true
-    
     os_unfair_lock_lock(&_lock)
     defer {
       os_unfair_lock_unlock(&_lock)
@@ -63,7 +63,7 @@ public final class DisposableHolder: Disposable {
       return
     }
     
-    _disposable = disposable
+    _disposableTable.add(disposable)
   }
-  
+
 }

@@ -28,11 +28,14 @@ public final class AnyObservable<Element, Success, Failure: Error>: Observable {
   
   @discardableResult
   public func subscribe<T>(with observer: T) -> Disposable where T : Observer, EventType == T.EventType {
-    if let anyObserver = observer as? AnyObserver<Element, Success, Failure> {
-      return _subscribeHandler(anyObserver)
-    } else {
-      return _subscribeHandler(AnyObserver(observer))
-    }
+    let sink = Sink(targetObserver: observer)
+    
+    let bridgingObserver = AnyObserver.init(eventHandler: sink.forward)
+    let disposable = _subscribeHandler(bridgingObserver)
+    
+    sink.setOriginalDisposable(disposable)
+    
+    return sink
   }
   
 }
