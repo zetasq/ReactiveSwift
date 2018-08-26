@@ -47,7 +47,9 @@ public final class KeyPathObservable<RootType: _KeyValueCodingAndObserving, Valu
       }
       
       os_unfair_lock_lock(&self._tableLock)
-      os_unfair_lock_unlock(&self._tableLock)
+      defer {
+        os_unfair_lock_unlock(&self._tableLock)
+      }
       
       for sink in self._disposableToSinkTable.values {
         sink.forward(event: .next(newValue))
@@ -61,7 +63,11 @@ public final class KeyPathObservable<RootType: _KeyValueCodingAndObserving, Valu
     #endif
   }
 
-  public func subscribe<T>(with observer: T) -> Disposable where T : Observer, KeyPathObservable.Element == T.Element, KeyPathObservable.Failure == T.Failure, KeyPathObservable.Success == T.Success {
+  public func subscribe<T>(with observer: T) -> Disposable
+    where T : Observer,
+    KeyPathObservable.Element == T.Element,
+    KeyPathObservable.Success == T.Success,
+    KeyPathObservable.Failure == T.Failure {
     
     os_unfair_lock_lock(&_tableLock)
     defer {

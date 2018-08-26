@@ -1,6 +1,6 @@
 //
-//  ReactiveSwiftTests.swift
-//  ReactiveSwiftTests
+//  KVO_Tests.swift
+//  KVO_Tests
 //
 //  Created by Zhu Shengqi on 1/8/2018.
 //  Copyright © 2018 zetasq. All rights reserved.
@@ -10,17 +10,7 @@ import XCTest
 
 @testable import ReactiveSwift
 
-class ReactiveSwiftTests: XCTestCase {
-  
-  override func setUp() {
-    super.setUp()
-    // Put setup code here. This method is called before the invocation of each test method in the class.
-  }
-  
-  override func tearDown() {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    super.tearDown()
-  }
+class KVO_Tests: XCTestCase {
   
   func testExample() {
     // This is an example of a functional test case.
