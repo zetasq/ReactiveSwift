@@ -1,5 +1,5 @@
 //
-//  Boxing+Observable.swift
+//  Boxing+KeyPathObservable.swift
 //  ReactiveSwift
 //
 //  Created by Zhu Shengqi on 15/8/2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension KeyValueObjectBox where T: AnyObject {
+extension RxBox where T: _KeyValueCodingAndObserving {
   
   public func observable<ValueType>(forKeyPath keyPath: KeyPath<T, ValueType>) -> KeyPathObservable<T, ValueType> {
     return obj.keyPathObservablePool.observable(forKeyPath: keyPath)
