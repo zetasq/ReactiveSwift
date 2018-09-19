@@ -60,10 +60,12 @@ internal final class ProxyDisposable: Hashable, Disposable {
   }
   
   // MARK: - Hashable
+  @inlinable
   public var hashValue: Int {
     return ObjectIdentifier(self).hashValue
   }
   
+  @inlinable
   public static func == (lhs: ProxyDisposable, rhs: ProxyDisposable) -> Bool {
     return lhs === rhs
   }

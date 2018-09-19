@@ -18,6 +18,7 @@ public protocol Disposable: AnyObject {
 
 extension Disposable {
   
+  @inlinable
   public func add(to disposeBag: DisposeBag) {
     disposeBag.add(self)
   }

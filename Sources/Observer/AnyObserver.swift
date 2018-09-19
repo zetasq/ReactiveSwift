@@ -30,6 +30,7 @@ public struct AnyObserver<Element, Success, Failure: Error>: Observer {
 
 extension AnyObserver {
   
+  @inlinable
   public init(nextHandler: @escaping (Element) -> Void) {
     self.init(eventHandler: { event in
       switch event {
@@ -41,6 +42,7 @@ extension AnyObserver {
     })
   }
   
+  @inlinable
   public init(finishHandler: @escaping (Result<Success, Failure>) -> Void) {
     self.init(eventHandler: { event in
       switch event {

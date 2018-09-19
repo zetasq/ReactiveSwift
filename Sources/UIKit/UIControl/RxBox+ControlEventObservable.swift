@@ -12,6 +12,7 @@ import UIKit
 
 extension RxBox where T: UIControl {
   
+  @inlinable
   public func observable(forControlEvent controlEvent: UIControl.Event) -> ControlEventObservable<T> {
     return obj.controlEventObservablePool.observable(forControlEvent: controlEvent)
   }

@@ -16,10 +16,12 @@ public enum Event<Element, Success, Failure: Error> {
   
   case finish(ResultType)
   
+  @inlinable
   public func map<E, S, F>(_ transform: (Event) -> Event<E, S, F>) -> Event<E, S, F> {
     return transform(self)
   }
   
+  @inlinable
   public func mapElement<E>(_ transform: (Element) -> E) -> Event<E, Success, Failure> {
     switch self {
     case .next(let element):
@@ -29,6 +31,7 @@ public enum Event<Element, Success, Failure: Error> {
     }
   }
   
+  @inlinable
   public func mapResult<S, F>(_ transform: (ResultType) -> Result<S, F>) -> Event<Element, S, F> {
     switch self {
     case .next(let element):

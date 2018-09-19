@@ -10,6 +10,7 @@ import Foundation
 
 extension Observable {
   
+  @inlinable
   public func schedule(on queue: DispatchQueue) -> AnyObservable<Element, Success, Failure> {
     return AnyObservable(subscribeHandler: { (observer) -> Disposable in
       return self.subscribe(with: AnyObserver(eventHandler: { event in

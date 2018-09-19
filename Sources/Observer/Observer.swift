@@ -24,10 +24,12 @@ extension Observer {
   
   public typealias EventType = Event<Element, Success, Failure>
   
+  @inlinable
   public func onNext(_ element: Element) {
     on(.next(element))
   }
   
+  @inlinable
   public func onFinish(_ result: EventType.ResultType) {
     on(.finish(result))
   }

@@ -15,6 +15,7 @@ private var controlEventObservablePoolKey = "keyPathObservablePoolKey"
 // We cannot extend AnyObject (due to explicit restriction by Swift designer), so we extend _KeyValueCodingAndObserving here.
 extension _KeyValueCodingAndObserving where Self: UIControl {
   
+  @usableFromInline
   internal var controlEventObservablePool: ControlEventObservablePool<Self> {
     assert(Thread.isMainThread)
     
@@ -31,10 +32,12 @@ extension _KeyValueCodingAndObserving where Self: UIControl {
 
 extension UIControl.Event: Hashable {
   
+  @inlinable
   public var hashValue: Int {
     return self.rawValue.hashValue
   }
   
+  @inlinable
   public static func ==(lhs: UIControl.Event, rhs: UIControl.Event) -> Bool {
     return lhs.rawValue == rhs.rawValue
   }

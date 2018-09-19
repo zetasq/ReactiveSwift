@@ -10,6 +10,7 @@ import Foundation
 
 extension Rx {
   
+  @inlinable
   public static func combineLatest<O1: Observable, O2: Observable>(_ observable1: O1, _ observable2: O2) -> CombineLatestObservable2<O1, O2> {
     return CombineLatestObservable2(observable1, observable2)
   }

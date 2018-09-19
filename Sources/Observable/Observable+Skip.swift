@@ -10,6 +10,7 @@ import Foundation
 
 extension Observable {
 
+  @inlinable
   public func skip(_ skipCount: Int) -> AnyObservable<Element, Success, Failure> {
     return AnyObservable(subscribeHandler: { (observer) -> Disposable in
       var index = 0

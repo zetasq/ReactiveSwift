@@ -10,6 +10,7 @@ import Foundation
 
 extension Observable {
   
+  @inlinable
   public func map<E>(_ transform: @escaping (Element) -> E) -> AnyObservable<E, Success, Failure> {
     return AnyObservable(subscribeHandler: { (observer) -> Disposable in
       return self.subscribe(with: AnyObserver(eventHandler: { event in
@@ -23,6 +24,7 @@ extension Observable {
     })
   }
   
+  @inlinable
   public func compactMap<E>(_ transform: @escaping (Element) -> E?) -> AnyObservable<E, Success, Failure> {
     return AnyObservable(subscribeHandler: { (observer) -> Disposable in
       return self.subscribe(with: AnyObserver(eventHandler: { event in
@@ -38,6 +40,7 @@ extension Observable {
     })
   }
   
+  @inlinable
   public func flatMap<E>(_ transform: @escaping (Element) -> [E]) -> AnyObservable<E, Success, Failure> {
     return AnyObservable(subscribeHandler: { (observer) -> Disposable in
       return self.subscribe(with: AnyObserver(eventHandler: { event in

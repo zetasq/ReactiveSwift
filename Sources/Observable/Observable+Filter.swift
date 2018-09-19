@@ -10,6 +10,7 @@ import Foundation
 
 extension Observable {
   
+  @inlinable
   public func filter(_ predicate: @escaping (Element) -> Bool) -> AnyObservable<Element, Success, Failure> {
     return AnyObservable(subscribeHandler: { (observer) -> Disposable in
       return self.subscribe(with: AnyObserver(eventHandler: { event in

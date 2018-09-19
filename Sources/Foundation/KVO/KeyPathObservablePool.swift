@@ -11,7 +11,8 @@ import Foundation
 private var keyPathObservablePoolKey = "keyPathObservablePoolKey"
 
 extension _KeyValueCodingAndObserving where Self: AnyObject {
-
+  
+  @usableFromInline
   internal var keyPathObservablePool: KeyPathObservablePool<Self> {
     objc_sync_enter(self)
     defer {
