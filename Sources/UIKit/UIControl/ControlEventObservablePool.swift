@@ -29,13 +29,13 @@ extension _KeyValueCodingAndObserving where Self: UIControl {
   
 }
 
-extension UIControlEvents: Hashable {
+extension UIControl.Event: Hashable {
   
   public var hashValue: Int {
     return self.rawValue.hashValue
   }
   
-  public static func ==(lhs: UIControlEvents, rhs: UIControlEvents) -> Bool {
+  public static func ==(lhs: UIControl.Event, rhs: UIControl.Event) -> Bool {
     return lhs.rawValue == rhs.rawValue
   }
   
@@ -45,7 +45,7 @@ public final class ControlEventObservablePool<ControlType: UIControl> {
   
   private unowned let control: ControlType
   
-  private var _observableTable: [UIControlEvents: ControlEventObservable<ControlType>] = [:]
+  private var _observableTable: [UIControl.Event: ControlEventObservable<ControlType>] = [:]
   
   internal init(control: ControlType) {
     assert(Thread.isMainThread)
@@ -63,7 +63,7 @@ public final class ControlEventObservablePool<ControlType: UIControl> {
     #endif
   }
   
-  public func observable(forControlEvent controlEvent: UIControlEvents) -> ControlEventObservable<ControlType> {
+  public func observable(forControlEvent controlEvent: UIControl.Event) -> ControlEventObservable<ControlType> {
     assert(Thread.isMainThread)
     
     if let observable = _observableTable[controlEvent] {

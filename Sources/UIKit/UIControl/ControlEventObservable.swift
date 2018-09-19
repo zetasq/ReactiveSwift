@@ -22,7 +22,7 @@ public final class ControlEventObservable<ControlType: UIControl>: NSObject, Obs
   private var _disposableToSinkTable: [ProxyDisposable: Sink<Element, Success, Failure>] = [:]
   private var _tableLock = os_unfair_lock()
   
-  internal init(control: ControlType, controlEvent: UIControlEvents) {
+  internal init(control: ControlType, controlEvent: UIControl.Event) {
     assert(Thread.isMainThread)
     #if DEBUG
     ObjectCounter.increment()
