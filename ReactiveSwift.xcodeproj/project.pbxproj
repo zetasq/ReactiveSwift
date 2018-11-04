@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D4166E3A218F2E640053DA26 /* Observable+Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4166E39218F2E640053DA26 /* Observable+Debounce.swift */; };
+		D4166E3C218F33C50053DA26 /* Observable+Throttle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4166E3B218F33C50053DA26 /* Observable+Throttle.swift */; };
 		D41BB1862124787B00DF7ED1 /* CombineLatest2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41BB1852124787B00DF7ED1 /* CombineLatest2.swift */; };
 		D41BB18821247C2600DF7ED1 /* CombineLatest2+_Sink.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41BB18721247C2600DF7ED1 /* CombineLatest2+_Sink.swift */; };
 		D46304162115F6A800B795DF /* AnyObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46304152115F6A800B795DF /* AnyObservable.swift */; };
@@ -56,6 +58,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D4166E39218F2E640053DA26 /* Observable+Debounce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Debounce.swift"; sourceTree = "<group>"; };
+		D4166E3B218F33C50053DA26 /* Observable+Throttle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Throttle.swift"; sourceTree = "<group>"; };
 		D41BB1852124787B00DF7ED1 /* CombineLatest2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineLatest2.swift; sourceTree = "<group>"; };
 		D41BB18721247C2600DF7ED1 /* CombineLatest2+_Sink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CombineLatest2+_Sink.swift"; sourceTree = "<group>"; };
 		D46304152115F6A800B795DF /* AnyObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyObservable.swift; sourceTree = "<group>"; };
@@ -148,6 +152,8 @@
 				D46304E4211A705C00B795DF /* Observable+Filter.swift */,
 				D49F05352123EA13003743EC /* Observable+Skip.swift */,
 				D49F06B521244C85003743EC /* Observable+Schedule.swift */,
+				D4166E39218F2E640053DA26 /* Observable+Debounce.swift */,
+				D4166E3B218F33C50053DA26 /* Observable+Throttle.swift */,
 			);
 			path = Observable;
 			sourceTree = "<group>";
@@ -400,7 +406,9 @@
 				D49F05342123DDB2003743EC /* KeyPathObservablePool.swift in Sources */,
 				D47327AC212486E700A453EA /* Rx.swift in Sources */,
 				D46304162115F6A800B795DF /* AnyObservable.swift in Sources */,
+				D4166E3A218F2E640053DA26 /* Observable+Debounce.swift in Sources */,
 				D4A9A2732116953E00014C97 /* Observable+Map.swift in Sources */,
+				D4166E3C218F33C50053DA26 /* Observable+Throttle.swift in Sources */,
 				D46304E5211A705C00B795DF /* Observable+Filter.swift in Sources */,
 				D47327BA21324C2400A453EA /* RxBox.swift in Sources */,
 				D47327C02132CEBF00A453EA /* RxBox+ControlEventObservable.swift in Sources */,
